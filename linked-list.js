@@ -192,8 +192,40 @@ function reverse(SLL) {
     nextNode = currNode.next; // storing the next node
     tempNode = currNode;
     currNode.next = prevNode; // reversing the pointer to point to the prevNode
-    currNode = nextNode;      // Iterating to the next node
-    prevNode = tempNode;      // setting the previous node to the c
+    currNode = nextNode; // Iterating to the next node
+    prevNode = tempNode; // setting the previous node to the c
+  }
+}
+
+// function recrusiveReverse(SLL, head) {
+//   // console.log(SLL);
+//   let currentNode = head;
+//   console.log(currentNode);
+
+//   // Base case
+//   if (currentNode.next === null) {
+//     return null;
+//   }
+
+//   // If head is equal to SLL head set it to null
+//   if (SLL.head === head) {
+
+//   }
+
+//   // console.log(`HEAD: `, head);
+//   // General case
+//   return recrusiveReverse(SLL, currentNode.next);
+// }
+
+function thirdFromEnd(list) {
+  let currentNode = list.head;
+
+  while (currentNode !== null) {
+    if (!currentNode.next.next.next) {
+      console.log('returning');
+      return currentNode;
+    }
+    currentNode = currentNode.next;
   }
 }
 
@@ -228,6 +260,8 @@ function main() {
   reverse(SLL);
   console.log('===============');
   display(SLL);
+  console.log('===============');
+  console.log(thirdFromEnd(SLL));
 }
 
 main();
