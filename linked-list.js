@@ -173,6 +173,30 @@ function findLast(SLL) {
   }
 }
 
+function reverse(SLL) {
+  let currNode = SLL.head;
+  let prevNode = null;
+  let nextNode = null;
+  let tempNode = null;
+  if (!SLL.head) {
+    return null;
+  }
+
+  // iterate through the SLL
+  // set currentNode.next to the previous node
+  //
+  while (currNode && currNode.value !== null) {
+    if (currNode.next === null) {
+      SLL.head = currNode;
+    }
+    nextNode = currNode.next; // storing the next node
+    tempNode = currNode;
+    currNode.next = prevNode; // reversing the pointer to point to the prevNode
+    currNode = nextNode;      // Iterating to the next node
+    prevNode = tempNode;      // setting the previous node to the c
+  }
+}
+
 function main() {
   const SLL = new LinkedList();
   const emptySLL = new LinkedList();
@@ -193,14 +217,17 @@ function main() {
   // display(SLL);
   SLL.remove('Tauhida');
   display(SLL);
-  console.log(size(SLL));
-  console.log(isEmpty(SLL));
-  console.log(isEmpty(emptySLL));
-  console.log(findPrevious(SLL, 'Apollo'));
-  console.log(findLast(SLL));
-  console.log(findLast(emptySLL));
+  // console.log(size(SLL));
+  // console.log(isEmpty(SLL));
+  // console.log(isEmpty(emptySLL));
+  // console.log(findPrevious(SLL, 'Apollo'));
+  // console.log(findLast(SLL));
+  // console.log(findLast(emptySLL));
 
-  console.log(WhatDoesThisProgramDo(SLL));
+  // console.log(WhatDoesThisProgramDo(SLL));
+  reverse(SLL);
+  console.log('===============');
+  display(SLL);
 }
 
 main();
