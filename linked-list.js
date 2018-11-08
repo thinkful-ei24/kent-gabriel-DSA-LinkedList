@@ -44,7 +44,7 @@ class LinkedList {
     let prevNode = this.head;
 
     while (currNode.value !== value) {
-      if (currNode.next ===  null) {
+      if (currNode.next === null) {
         return null;
       } else {
         prevNode = currNode;
@@ -59,7 +59,7 @@ class LinkedList {
     let currNode = this.head;
 
     while (currNode.value !== value) {
-      if (currNode.next ===  null) {
+      if (currNode.next === null) {
         return null;
       } else {
         currNode = currNode.next;
@@ -137,8 +137,45 @@ function size(SLL) {
   return size;
 }
 
+function isEmpty(SLL) {
+  return SLL.head === null;
+}
+
+function findPrevious(SLL, item) {
+  let currNode = SLL.head;
+
+  if (!SLL.head) {
+    return null;
+  }
+
+  while (currNode && currNode.value !== null) {
+    if (currNode.next && currNode.next.value === item) {
+      return currNode;
+    } else if (currNode.next === null) {
+      return null;
+    }
+    currNode = currNode.next;
+  }
+}
+
+function findLast(SLL) {
+  let currNode = SLL.head;
+
+  if (!SLL.head) {
+    return null;
+  }
+
+  while (currNode && currNode.value !== null) {
+    if (currNode.next === null) {
+      return currNode;
+    }
+    currNode = currNode.next;
+  }
+}
+
 function main() {
   const SLL = new LinkedList();
+  const emptySLL = new LinkedList();
   SLL.insertFirst('Apollo');
   SLL.insertLast('Boomer');
   SLL.insertLast('Helo');
@@ -157,6 +194,11 @@ function main() {
   SLL.remove('Tauhida');
   display(SLL);
   console.log(size(SLL));
+  console.log(isEmpty(SLL));
+  console.log(isEmpty(emptySLL));
+  console.log(findPrevious(SLL, 'Apollo'));
+  console.log(findLast(SLL));
+  console.log(findLast(emptySLL));
 }
 
 main();
