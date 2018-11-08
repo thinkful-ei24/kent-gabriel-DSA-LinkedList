@@ -229,6 +229,28 @@ function thirdFromEnd(list) {
   }
 }
 
+function middleElement(list) {
+  // traverse through the list
+  // keep track of the middle
+  // when the list ends, return the middle
+  let currNode = list.head;
+  if (!currNode) {
+    return null;
+  }
+
+  let counter = 0;
+  let middleNode = currNode;
+
+  while (currNode !== null) {
+    currNode = currNode.next;
+    if (counter % 2 === 0 && counter > 0) {
+      middleNode = middleNode.next;
+    }
+    counter++;
+  }
+  return middleNode;
+}
+
 function main() {
   const SLL = new LinkedList();
   const emptySLL = new LinkedList();
@@ -248,7 +270,8 @@ function main() {
   SLL.insertAt('Kat', 2);
   // display(SLL);
   SLL.remove('Tauhida');
-  display(SLL);
+  SLL.insertLast('squirrel');
+  // display(SLL);
   // console.log(size(SLL));
   // console.log(isEmpty(SLL));
   // console.log(isEmpty(emptySLL));
@@ -261,7 +284,8 @@ function main() {
   console.log('===============');
   display(SLL);
   console.log('===============');
-  console.log(thirdFromEnd(SLL));
+  // console.log(thirdFromEnd(SLL));
+  console.log('Middle:', middleElement(SLL));
 }
 
 main();
