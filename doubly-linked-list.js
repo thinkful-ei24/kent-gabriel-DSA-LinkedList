@@ -110,6 +110,11 @@ class DoublyLinkedList {
       return;
     }
 
+    if (this.tail.value === item) {
+      this.tail = this.tail.prev;
+      return;
+    }
+
     let currNode = this.head;
     let prevNode = this.head;
 
@@ -123,6 +128,7 @@ class DoublyLinkedList {
       return;
     }
     prevNode.next = currNode.next;
+    currNode.next.prev = currNode.prev;
   }
 }
 
@@ -137,6 +143,31 @@ function display(DLL) {
   }
 }
 
+function reverse(DLL) {
+  let currNode = DLL.head;
+  let tempNode = null;
+  if (!DLL.head) {
+    return null;
+  }
+
+  // iterate through the DLL
+  // set currentNode.next to the previous node
+  while (currNode && currNode.value !== null) {
+    if (currNode.next === null) {
+      DLL.head = currNode;
+    }
+    tempNode = currNode.next;
+    currNode.next = currNode.prev;
+    currNode.prev = tempNode;
+    currNode = currNode.prev;
+  }
+  let tempHead = DLL.head;
+  DLL.head = DLL.tail;
+  DLL.tail = tempHead;
+  return;
+}
+
+
 function mainDLL() {
   const DLL = new DoublyLinkedList();
   DLL.insertFirst('Aquaria');
@@ -146,18 +177,26 @@ function mainDLL() {
   DLL.insertLast('Sagittaron');
   display(DLL);
   console.log('=======');
-  // DLL.insertBefore('hello there', 'Aquaria');
+  // // DLL.insertBefore('hello there', 'Aquaria');
 
-  display(DLL);
-  console.log('=====');
-  DLL.insertAfter('Sagittaron', 'goodbye there');
+  // display(DLL);
+  // console.log('=====');
+  // DLL.insertAfter('Sagittaron', 'goodbye there');
 
-  display(DLL);
+  // display(DLL);
 
-  console.log('=====');
+  // console.log('=====');
 
-  DLL.insertAt('hfgadkljkoadfjakfa', 5);
+  // DLL.insertAt('hfgadkljkoadfjakfa', 5);
 
+  // display(DLL);
+  // console.log(DLL.find('hfgadkljkoadfjakfa'));
+  // console.log('=======');
+  // display(DLL);
+  // console.log('=======');
+  // DLL.remove('Gemenon');
+  // display(DLL);
+  reverse(DLL);
   display(DLL);
 }
 
