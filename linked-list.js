@@ -199,6 +199,36 @@ function main() {
   console.log(findPrevious(SLL, 'Apollo'));
   console.log(findLast(SLL));
   console.log(findLast(emptySLL));
+
+  console.log(WhatDoesThisProgramDo(SLL));
 }
 
 main();
+
+// Function that skips duplicates in a linked list - O(n^2)
+function WhatDoesThisProgramDo(list) {
+  let counter = 0;
+  let twocounter = 0;
+
+  let current = list.head; // constant
+
+  while (current !== null) {
+    counter++;
+    // O(n)
+    let newNode = current; // constant
+
+    while (newNode.next !== null) {
+      twocounter++;
+      // O(n)
+      if (newNode.next.value === current.value) {
+        newNode.next = newNode.next.next; // constant
+      } else {
+        newNode = newNode.next; // constant
+      }
+    }
+
+    current = current.next; // constant
+  }
+
+  return { counter, twocounter };
+}
