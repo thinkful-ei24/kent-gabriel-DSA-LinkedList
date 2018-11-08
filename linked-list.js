@@ -39,6 +39,36 @@ class LinkedList {
     prevNode.next = new _Node(item, prevNode.next);
   }
 
+  insertBefore(item, value) {
+    let currNode = this.head;
+    let prevNode = this.head;
+
+    while (currNode.value !== value) {
+      if (currNode.next ===  null) {
+        return null;
+      } else {
+        prevNode = currNode;
+        currNode = currNode.next;
+      }
+    }
+
+    prevNode.next = new _Node(item, currNode);
+  }
+
+  insertAfter(item, value) {
+    let currNode = this.head;
+
+    while (currNode.value !== value) {
+      if (currNode.next ===  null) {
+        return null;
+      } else {
+        currNode = currNode.next;
+      }
+    }
+
+    currNode.next = new _Node(item, currNode.next);
+  }
+
   // Retrieval
   find(item) {
     let currNode = this.head;
@@ -81,34 +111,52 @@ class LinkedList {
     }
     prevNode.next = currNode.next;
   }
+}
 
-  // Remove this
-  display() {
-    let currNode = this.head;
-
-    if (!this.head) {
-      return null;
-    }
-
-    while (currNode && currNode.value !== null) {
-      console.log(currNode.value);
-      currNode = currNode.next;
-    }
+function display(SLL) {
+  let currNode = SLL.head;
+  if (!SLL.head) {
+    return null;
   }
+  while (currNode && currNode.value !== null) {
+    console.log(currNode.value);
+    currNode = currNode.next;
+  }
+}
+
+function size(SLL) {
+  let currNode = SLL.head;
+  let size = 0;
+  if (!SLL.head) {
+    return size;
+  }
+  while (currNode && currNode.value !== null) {
+    currNode = currNode.next;
+    size++;
+  }
+  return size;
 }
 
 function main() {
   const SLL = new LinkedList();
-  SLL.insertFirst('moto');
-  SLL.insertFirst('Hello');
-  SLL.insertFirst('bob');
-  // console.log(SLL.find('Hello'));
-  SLL.insertAt('bbbb', 1);
-
-  // console.log(SLL.find('bbbb'));
-  SLL.remove('bbbb');
-
-  SLL.display();
+  SLL.insertFirst('Apollo');
+  SLL.insertLast('Boomer');
+  SLL.insertLast('Helo');
+  SLL.insertLast('Husker');
+  SLL.insertLast('Starbuck');
+  SLL.insertLast('Tauhida');
+  // display(SLL);
+  SLL.remove('squirrel');
+  // display(SLL);
+  SLL.insertBefore('Athena', 'Boomer');
+  // display(SLL);
+  SLL.insertAfter('Hotdog', 'Helo');
+  // display(SLL);
+  SLL.insertAt('Kat', 2);
+  // display(SLL);
+  SLL.remove('Tauhida');
+  display(SLL);
+  console.log(size(SLL));
 }
 
 main();
