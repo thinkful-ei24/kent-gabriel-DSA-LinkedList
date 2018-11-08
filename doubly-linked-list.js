@@ -39,36 +39,47 @@ class DoublyLinkedList {
       currNode = prevNode.next;
     }
     prevNode.next = new _Node(item, prevNode.next);
+    currNode.prev = prevNode;
   }
 
   insertBefore(item, value) {
-    let currNode = this.head;
-    let prevNode = this.head;
-
-    while (currNode.value !== value) {
-      if (currNode.next === null) {
-        return null;
-      } else {
-        prevNode = currNode;
-        currNode = currNode.next;
-      }
+    if (!this.head || this.head.value === value) {
+      this.insertFirst(item);
+      return;
     }
 
-    prevNode.next = new _Node(item, currNode);
+    let currentNode = this.head;
+    let previousNode = this.head;
+
+    while (currentNode.value !== value) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+    }
+
+    let newItem = new _Node(item, currentNode, previousNode);
+    previousNode.next = newItem;
   }
 
   insertAfter(item, value) {
-    let currNode = this.head;
+    if (!this.head || this.head.value === value) {
+      this.insertFirst(item);
+      return;
+    }
 
-    while (currNode.value !== value) {
-      if (currNode.next === null) {
-        return null;
+    let currentNode = this.head;
+    let previousNode = this.head;
+
+    while (currentNode.value !== value) {
+      if (currentNode.next === null) {
+        currentNode.next = new _Node(value, currentNode.next, previousNode);
+        return;
       } else {
-        currNode = currNode.next;
+        currentNode = currentNode.next;
       }
     }
 
-    currNode.next = new _Node(item, currNode.next);
+    let newItem = new _Node(item, currentNode, previousNode);
+    currentNode.next = newItem;
   }
 
   // Retrieval
@@ -133,6 +144,20 @@ function mainDLL() {
   DLL.insertLast('Gemenon');
   DLL.insertLast('Picon');
   DLL.insertLast('Sagittaron');
+  display(DLL);
+  console.log('=======');
+  // DLL.insertBefore('hello there', 'Aquaria');
+
+  display(DLL);
+  console.log('=====');
+  DLL.insertAfter('Sagittaron', 'goodbye there');
+
+  display(DLL);
+
+  console.log('=====');
+
+  DLL.insertAt('hfgadkljkoadfjakfa', 5);
+
   display(DLL);
 }
 

@@ -282,31 +282,6 @@ function main() {
   // reverse(SLL);
   // console.log('===============');
   // display(SLL);
-<<<<<<< HEAD
-  SLL.insertBefore('Athena', 'Boomer');
-  // display(SLL);
-  SLL.insertAfter('Hotdog', 'Helo');
-  // display(SLL);
-  SLL.insertAt('Kat', 2);
-  // display(SLL);
-  SLL.remove('Tauhida');
-  SLL.insertLast('squirrel');
-  // display(SLL);
-  // console.log(size(SLL));
-  // console.log(isEmpty(SLL));
-  // console.log(isEmpty(emptySLL));
-  // console.log(findPrevious(SLL, 'Apollo'));
-  // console.log(findLast(SLL));
-  // console.log(findLast(emptySLL));
-
-  // console.log(WhatDoesThisProgramDo(SLL));
-  reverse(SLL);
-  console.log('===============');
-  display(SLL);
-  console.log('===============');
-  // console.log(thirdFromEnd(SLL));
-  console.log('Middle:', middleElement(SLL));
-=======
   // console.log('===============');
   // console.log(thirdFromEnd(SLL));
   const cycleList = new LinkedList();
@@ -325,7 +300,6 @@ function main() {
   // cycleList.insertLast('Bat');
   // cycleList.insertLast('Cat');
   // display(cycleList);
->>>>>>> 05b3f5744fd405dcec3b0a18790c941733ed98d7
 }
 
 main();
