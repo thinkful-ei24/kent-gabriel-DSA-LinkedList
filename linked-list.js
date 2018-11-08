@@ -253,16 +253,36 @@ function middleElement(list) {
 
 function main() {
   const SLL = new LinkedList();
-  const emptySLL = new LinkedList();
-  SLL.insertFirst('Apollo');
-  SLL.insertLast('Boomer');
-  SLL.insertLast('Helo');
-  SLL.insertLast('Husker');
-  SLL.insertLast('Starbuck');
-  SLL.insertLast('Tauhida');
+  // const emptySLL = new LinkedList();
+  // SLL.insertFirst('Apollo');
+  // SLL.insertLast('Boomer');
+  // SLL.insertLast('Helo');
+  // SLL.insertLast('Husker');
+  // SLL.insertLast('Starbuck');
+  // SLL.insertLast('Tauhida');
+  // // display(SLL);
+  // SLL.remove('squirrel');
+  // // display(SLL);
+  // SLL.insertBefore('Athena', 'Boomer');
+  // // display(SLL);
+  // SLL.insertAfter('Hotdog', 'Helo');
+  // // display(SLL);
+  // SLL.insertAt('Kat', 2);
+  // // display(SLL);
+  // SLL.remove('Tauhida');
   // display(SLL);
-  SLL.remove('squirrel');
+  // // console.log(size(SLL));
+  // // console.log(isEmpty(SLL));
+  // // console.log(isEmpty(emptySLL));
+  // // console.log(findPrevious(SLL, 'Apollo'));
+  // // console.log(findLast(SLL));
+  // // console.log(findLast(emptySLL));
+
+  // // console.log(WhatDoesThisProgramDo(SLL));
+  // reverse(SLL);
+  // console.log('===============');
   // display(SLL);
+<<<<<<< HEAD
   SLL.insertBefore('Athena', 'Boomer');
   // display(SLL);
   SLL.insertAfter('Hotdog', 'Helo');
@@ -286,9 +306,46 @@ function main() {
   console.log('===============');
   // console.log(thirdFromEnd(SLL));
   console.log('Middle:', middleElement(SLL));
+=======
+  // console.log('===============');
+  // console.log(thirdFromEnd(SLL));
+  const cycleList = new LinkedList();
+
+  cycleList.head = new _Node('1', null);
+  cycleList.head.next = new _Node(
+    '2',
+    new _Node('3', new _Node('4', cycleList.head))
+  );
+  console.log(cycleList);
+
+  checkIfCycled(cycleList);
+  checkIfCycled(SLL);
+
+  // cycleList.insertFirst('Hat');
+  // cycleList.insertLast('Bat');
+  // cycleList.insertLast('Cat');
+  // display(cycleList);
+>>>>>>> 05b3f5744fd405dcec3b0a18790c941733ed98d7
 }
 
 main();
+
+function checkIfCycled(list) {
+  const arrayOfNodes = [];
+
+  let currentNode = list.head;
+
+  while (currentNode !== null) {
+    if (arrayOfNodes.includes(currentNode.value)) {
+      console.log('found a cycle');
+      return;
+    }
+
+    arrayOfNodes.push(currentNode.value);
+    currentNode = currentNode.next;
+  }
+  console.log('no cycle');
+}
 
 // Function that skips duplicates in a linked list - O(n^2)
 function WhatDoesThisProgramDo(list) {
@@ -317,3 +374,9 @@ function WhatDoesThisProgramDo(list) {
 
   return { counter, twocounter };
 }
+
+/*
+while loop through linked list
+at every node in the list check whether the inserted item or the node value comes first (ex 2 < 3)
+if inserted item is less than next node's value insert it after the current node
+*/
